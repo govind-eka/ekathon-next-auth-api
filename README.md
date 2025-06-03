@@ -1,40 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EKA Healthcare Auth Proxy - Next.js
 
-## Getting Started
+repo to be used if participants decide to use eka care's SDK on FE directly
+obtain your client ID, client secret and API key and paste them in the below URL and click on the `deploy` button. that makes a repo in your vercel account, and will clone this repo and deploy, and then when initing the SDK on a FE client side app you can use this domain and api route. (more on that, link)
 
-First, run the development server:
+## 🚀 One-Click Deploy
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- obtain your client ID, client
+  [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/govind-eka/eka-vercel-nextjs&env=EKA_CLIENT_ID,EKA_CLIENT_SECRET,EKA_API_KEY&envDescription=Your%20EKA%20Healthcare%20API%20credentials%20from%20the%20hackathon&envLink=http://developer.eka.care/api-reference/)
+
+**During deployment, you'll be prompted to enter:**
+
+- `EKA_CLIENT_ID` - Your client ID
+- `EKA_CLIENT_SECRET` - Your client secret
+- `EKA_API_KEY` - Your API key
+
+## 📋 Usage
+
+After deployment, use your Vercel URL in the EKA SDK, on Frontend:
+
+```js
+const eka = createEkaInstance({
+  source: "FE",
+  auth_token: "initial-token",
+  refresh_token: "initial-refresh",
+  refreshTokenFN: myRefreshFn, // this is provided, in the NPM docs, you may copy it and use it on your FE apps
+  backendAuthEndpointURL: "https://URL-that-vercel-gives-you/api/manage-auth",
+});
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
