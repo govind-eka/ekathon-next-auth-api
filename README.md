@@ -1,6 +1,6 @@
 # EKA Healthcare Auth Proxy - Next.js
 
-repo to be used if participants decide to use eka care's SDK on FE directly
+repo to be used when initializing eka care's SDK on FE directly
 obtain your client ID, client secret and API key. Click on the `deploy` button below. this makes a repo in your GH account by cloning our repo, initializes a vercel project and connects the project with the cloned repo. And now when initializing the SDK on a FE client side app you can use the domain (that vercel assigns upon successful deployment) and leverage the pre made API route. (more on that, link)
 
 ## 🚀 One-Click Deploy
@@ -29,8 +29,7 @@ After deployment, use your Vercel URL in the EKA SDK, on Frontend:
 const eka = createEkaInstance({
   source: "FE",
   auth_token: "initial-token",
-  refresh_token: "initial-refresh",
-  refreshTokenFN: myRefreshFn, // this fn is provided, in the dev docs, you may copy it and use it on your FE apps
   backendAuthEndpointURL: "https://URL-that-vercel-gives-you/api/manage-auth",
+  base_url: "https://api.eka.care" | "https://api.dev.eka.care",
 });
 ```
